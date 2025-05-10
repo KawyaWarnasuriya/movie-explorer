@@ -1,0 +1,49 @@
+.favorites-page {
+    padding: 0 5%;
+    background-color: inherit;
+    color: inherit;
+    min-height: 100vh;
+}
+
+.favorites-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+  
+.favorites-title {
+    font-size: 2rem;
+    color: brown;
+    text-shadow: 2px 2px 4px #fc7c02;
+    margin: 0;
+    text-align: center;
+}
+
+  
+.favorites-page p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: gray;
+    margin-top: 2rem;
+}
+  
+.movies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    background-color: inherit;
+    animation: fadeIn 1.5s ease-out forwards;
+    opacity: 0;
+}
+  
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}
+  

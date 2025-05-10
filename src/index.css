@@ -1,0 +1,14 @@
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}

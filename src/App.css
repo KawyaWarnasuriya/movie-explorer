@@ -1,0 +1,93 @@
+.app-container {
+  padding: 1rem;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode {
+  background-color: #1e1e1e;
+  color: #000000;
+}
+
+.light-mode {
+  background-color: antiquewhite;
+  color: #000000;
+}
+
+.heading-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.heading {
+  margin: 0;
+  text-align: center;
+  color: brown;
+  text-shadow: 2px 2px 4px #fc7c02;
+  background: transparent;
+}
+
+.theme-toggle-button {
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+.movies-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.search-container {
+  display: flex;
+  justify-content: right;
+  padding:0 5%;
+  gap:10px;
+}
+
+
+.search-container input {
+  padding: 0.8rem;
+  border: 1px solid #fc7c02;
+  border-radius: 8px;
+  width: 300px;
+  background-color: inherit;
+  color: inherit;
+
+}
+
+.movies-grid {
+  background-color: inherit;
+  opacity: 0;
+  animation: fadeIn 2s ease-out forwards 0.5s;
+
+}
+
+.movie-card {
+  background-color: inherit;
+  color: inherit;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 0.5rem;
+  display: flex;
+  
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+
+

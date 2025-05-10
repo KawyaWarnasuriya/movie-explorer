@@ -1,0 +1,33 @@
+.profile-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: brown;
+    color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+  
+.dropdown {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    margin-top: 8px;
+    border-radius: 6px;
+    overflow: hidden;
+    z-index: 100;
+}
+  
+.dropdown > div {
+    padding: 10px 16px;
+    cursor: pointer;
+}
+  
+.dropdown > div:hover {
+    background-color: #f86868;
+}
+  
