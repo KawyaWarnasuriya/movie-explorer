@@ -37,43 +37,70 @@ const Signup = () => {
     }
 
     try {
-      // Create Firebase Authentication account
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      // =========================================
+      // CREATE FIREBASE AUTHENTICATION ACCOUNT
+      // =========================================
+
+      const userCredential =
+        await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
 
       const user = userCredential.user;
 
-      // Save user information in Firestore
-      await setDoc(doc(db, 'user', user.uid), {
-        uid: user.uid,
-        email: user.email,
-        createdAt: new Date().toISOString(),
-      });
 
-      // Go to home page
+      // =========================================
+      // SAVE USER INFORMATION IN FIRESTORE
+      // IMPORTANT:
+      // Collection name is "users"
+      // =========================================
+
+      await setDoc(
+        doc(db, 'users', user.uid),
+        {
+          uid: user.uid,
+          email: user.email,
+          createdAt: new Date().toISOString(),
+        }
+      );
+
+
+      // =========================================
+      // GO TO HOME PAGE
+      // =========================================
+
       navigate('/');
+
 
     } catch (err) {
       console.error('SIGNUP ERROR:', err);
 
       switch (err.code) {
+
         case 'auth/email-already-in-use':
-          setError('This email is already registered.');
+          setError(
+            'This email is already registered.'
+          );
           break;
 
         case 'auth/invalid-email':
-          setError('Please enter a valid email address.');
+          setError(
+            'Please enter a valid email address.'
+          );
           break;
 
         case 'auth/weak-password':
-          setError('Password should be at least 6 characters.');
+          setError(
+            'Password should be at least 6 characters.'
+          );
           break;
 
         case 'permission-denied':
-          setError('Firestore permission denied.');
+          setError(
+            'Firestore permission denied.'
+          );
           break;
 
         case 'failed-precondition':
@@ -84,7 +111,9 @@ const Signup = () => {
 
         default:
           setError(
-            `Signup failed: ${err.message || err.code}`
+            `Signup failed: ${
+              err.message || err.code
+            }`
           );
       }
     }
@@ -93,23 +122,32 @@ const Signup = () => {
   return (
     <div
       className={`signup-page ${
-        darkMode ? 'signup-dark' : 'signup-light'
+        darkMode
+          ? 'signup-dark'
+          : 'signup-light'
       }`}
       style={{
-        '--signup-background-image': `url(${signupBackground})`,
+        '--signup-background-image':
+          `url(${signupBackground})`,
       }}
     >
 
-      {/* Background overlay */}
+      {/* =========================================
+          BACKGROUND OVERLAY
+          ========================================= */}
       <div className="signup-background-overlay"></div>
 
-      {/* Navbar */}
+
+      {/* =========================================
+          NAVBAR
+          ========================================= */}
       <nav className="signup-navbar">
 
         <div
           className="signup-brand"
           onClick={() => navigate('/')}
         >
+
           <div className="signup-website-name">
             Movie Explorer
           </div>
@@ -117,9 +155,12 @@ const Signup = () => {
           <div className="signup-website-tagline">
             Discover Your Favorite Films
           </div>
+
         </div>
 
+
         <div className="signup-navbar-actions">
+
           <button
             onClick={toggleTheme}
             className="theme-toggle-button"
@@ -129,13 +170,23 @@ const Signup = () => {
                 : 'Switch to dark mode'
             }
           >
-            {darkMode ? <FaSun /> : <FaMoon />}
+
+            {darkMode ? (
+              <FaSun />
+            ) : (
+              <FaMoon />
+            )}
+
           </button>
+
         </div>
 
       </nav>
 
-      {/* Signup Content */}
+
+      {/* =========================================
+          SIGNUP CONTENT
+          ========================================= */}
       <div className="signup-content">
 
         <form
@@ -143,15 +194,25 @@ const Signup = () => {
           className="signup-form"
         >
 
+          {/* =====================================
+              HEADING
+              ===================================== */}
           <div className="signup-heading">
-            <h2>Create Account</h2>
+
+            <h2>
+              Create Account
+            </h2>
 
             <p>
               Sign up to explore your favorite movies
             </p>
+
           </div>
 
-          {/* Email */}
+
+          {/* =====================================
+              EMAIL
+              ===================================== */}
           <div className="signup-input-group">
 
             <label htmlFor="signup-email">
@@ -163,13 +224,18 @@ const Signup = () => {
               type="email"
               placeholder="Enter your email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) =>
+                setEmail(e.target.value)
+              }
               required
             />
 
           </div>
 
-          {/* Password */}
+
+          {/* =====================================
+              PASSWORD
+              ===================================== */}
           <div className="signup-input-group">
 
             <label htmlFor="signup-password">
@@ -180,10 +246,16 @@ const Signup = () => {
 
               <input
                 id="signup-password"
-                type={showPassword ? 'text' : 'password'}
+                type={
+                  showPassword
+                    ? 'text'
+                    : 'password'
+                }
                 placeholder="Enter your password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) =>
+                  setPassword(e.target.value)
+                }
                 required
               />
 
@@ -191,7 +263,9 @@ const Signup = () => {
                 type="button"
                 className="signup-password-toggle"
                 onClick={() =>
-                  setShowPassword((prev) => !prev)
+                  setShowPassword(
+                    (prev) => !prev
+                  )
                 }
                 aria-label={
                   showPassword
@@ -199,18 +273,23 @@ const Signup = () => {
                     : 'Show password'
                 }
               >
+
                 {showPassword ? (
                   <FiEye size={19} />
                 ) : (
                   <FiEyeOff size={19} />
                 )}
+
               </button>
 
             </div>
 
           </div>
 
-          {/* Confirm Password */}
+
+          {/* =====================================
+              CONFIRM PASSWORD
+              ===================================== */}
           <div className="signup-input-group">
 
             <label htmlFor="confirm-password">
@@ -248,18 +327,23 @@ const Signup = () => {
                     : 'Show confirm password'
                 }
               >
+
                 {showConfirmPassword ? (
                   <FiEye size={19} />
                 ) : (
                   <FiEyeOff size={19} />
                 )}
+
               </button>
 
             </div>
 
           </div>
 
-          {/* Signup Button */}
+
+          {/* =====================================
+              SIGNUP BUTTON
+              ===================================== */}
           <button
             type="submit"
             className="signup-submit-button"
@@ -267,19 +351,29 @@ const Signup = () => {
             Sign Up
           </button>
 
-          {/* Login Link */}
+
+          {/* =====================================
+              LOGIN LINK
+              ===================================== */}
           <p className="login-link">
+
             Already have an account?{' '}
 
             <button
               type="button"
-              onClick={() => navigate('/login')}
+              onClick={() =>
+                navigate('/login')
+              }
             >
               Log In
             </button>
+
           </p>
 
-          {/* Error */}
+
+          {/* =====================================
+              ERROR
+              ===================================== */}
           {error && (
             <p className="signup-error">
               {error}

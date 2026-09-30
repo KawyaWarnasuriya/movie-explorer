@@ -28,6 +28,7 @@ const Login = () => {
     setError('');
 
     try {
+      // Login with Firebase Authentication
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
@@ -36,7 +37,9 @@ const Login = () => {
 
       const user = userCredential.user;
 
-      const docRef = doc(db, 'user', user.uid);
+      // Get user information from Firestore
+      // IMPORTANT: collection name is "users"
+      const docRef = doc(db, 'users', user.uid);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
@@ -45,6 +48,7 @@ const Login = () => {
         console.log('No user data found!');
       }
 
+      // Go to home page
       navigate('/home');
 
     } catch (err) {
