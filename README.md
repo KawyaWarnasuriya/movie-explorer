@@ -59,10 +59,18 @@ A feature-rich movie discovery app built with React, powered by the TMDb API, wi
 <br/>
 
 ## 📸 Screenshots
-| Home Page                          | Login                               | Movie Details                         |
-| ---------------------------------- | ----------------------------------- | ------------------------------------- | 
-| ![123](https://github.com/user-attachments/assets/6d611a63-3aeb-47b9-acd8-71d7f5638403)| ![456](https://github.com/user-attachments/assets/1e48a149-5ffe-49e8-a431-cc7b6e5a29b9)|![Screenshot (381)](https://github.com/user-attachments/assets/e0d35986-ad0c-4620-bb8d-4904a956e198)| 
 
+| Home Page | Landing Page | Movie Cards |
+|-----------|--------------|-------------|
+| ![Home Page](./screenshots/Home-page.png) | ![Landing Page](./screenshots/landing-page.png) | ![Movie Cards](./screenshots/movie-cards.png) |
+
+| Light Login | Light Signup | Profile Page |
+|-------------|--------------|--------------|
+| ![Light Login](./screenshots/light-login-page.png) | ![Light Signup](./screenshots/light-signup-page.png) | ![Profile Page](./screenshots/profile-page.png) |
+
+| Dark Login | Dark Signup | Favourite Page |
+|------------|-------------|----------------|
+| ![Dark Login](./screenshots/dark-login-page.png) | ![Dark Signup](./screenshots/dark-signup-page.png) | ![Favourite Page](./screenshots/favourite-page.png) |
 <br/>
 
 ## 🌍 Deployment
