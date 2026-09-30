@@ -15,22 +15,53 @@ function ProfileIcon() {
     navigate('/');
   };
 
-  const firstLetter = authUser?.email?.charAt(0).toUpperCase() || '?';
+  const firstLetter =
+    authUser?.email?.charAt(0).toUpperCase() || '?';
 
   return (
     <div className="profile-menu">
-      <div className="profile-icon" onClick={() => setOpen(!open)}>
+
+      {/* Profile Icon */}
+
+      <div
+        className={`profile-icon ${open ? 'profile-icon-active' : ''}`}
+        onClick={() => setOpen(!open)}
+      >
         {firstLetter}
       </div>
+
+
+      {/* Dropdown */}
+
       {open && (
         <div className="dropdown">
-          <div onClick={() => navigate('/home')}>Home</div>
-          <div onClick={() => navigate('/profile')}>Profile</div>
-          <div onClick={() => navigate('/favorites')}>Favorites</div>
-          <div onClick={() => navigate('/history')}>History</div>
-          <div onClick={handleLogout}>Logout</div>
+
+          <div onClick={() => navigate('/home')}>
+            Home
+          </div>
+
+          <div onClick={() => navigate('/profile')}>
+            Profile
+          </div>
+
+          <div onClick={() => navigate('/favorites')}>
+            Favorites
+          </div>
+
+          <div onClick={() => navigate('/history')}>
+            History
+          </div>
+
+          <div
+            className="logout-item"
+            onClick={handleLogout}
+          >
+            Logout
+          </div>
+
         </div>
       )}
+
     </div>
   );
 }

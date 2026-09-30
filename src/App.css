@@ -1,93 +1,782 @@
-.app-container {
-  padding: 1rem;
-  min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+/* ======================================================
+   GLOBAL
+====================================================== */
+
+* {
+  box-sizing: border-box;
 }
 
-.dark-mode {
-  background-color: #1e1e1e;
-  color: #000000;
-}
-
-.light-mode {
-  background-color: antiquewhite;
-  color: #000000;
-}
-
-.heading-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  align-items: center;
-}
-
-.heading {
+html,
+body,
+#root {
   margin: 0;
-  text-align: center;
-  color: brown;
-  text-shadow: 2px 2px 4px #fc7c02;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* ======================================================
+   APP CONTAINER
+====================================================== */
+
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+/* ======================================================
+   HOME PAGE
+====================================================== */
+
+.home-page {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+
+/* LIGHT MODE */
+
+.home-light {
+  background: #eeeeee;
+  color: #111111;
+}
+
+
+/* DARK MODE */
+
+.home-dark {
+  background: #111111;
+  color: #ffffff;
+}
+
+
+/* ======================================================
+   NAVBAR
+====================================================== */
+
+.home-navbar {
+  position: relative;
+
+  width: 100%;
+  height: 80px;
+
+  padding: 0 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background:
+    linear-gradient(
+      90deg,
+      #050505 0%,
+      #3d3d3d 50%,
+      #050505 100%
+    );
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.45);
+
+  z-index: 100;
+
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* ======================================================
+   NAVBAR BRAND
+====================================================== */
+
+.home-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  cursor: pointer;
+
+  user-select: none;
+
   background: transparent;
 }
 
-.theme-toggle-button {
-  margin-bottom: 1rem;
-  border-radius: 8px;
+
+.home-website-name {
+  margin: 0;
+  padding: 0;
+
+  color: #f2f2f2;
+
+  background: transparent;
+
+  font-size: 26px;
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+
+  line-height: 1.1;
+
+  text-shadow:
+    2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+
+.home-website-tagline {
+  margin-top: 3px;
+  padding: 0;
+
+  color: #bdbdbd;
+
+  background: transparent;
+
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 400;
+
+  letter-spacing: 0.8px;
+
+  line-height: 1.2;
+}
+
+
+/* ======================================================
+   NAVBAR ACTIONS
+====================================================== */
+
+.home-navbar-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  background: transparent;
+}
+
+
+/* ======================================================
+   THEME BUTTON
+====================================================== */
+
+.home-theme-button {
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+  margin: 0;
+
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-}
-
-
-.movies-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
   justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  color: #ffffff;
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease;
 }
 
-.search-container {
+
+.home-theme-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+
+  border-color: rgba(255, 255, 255, 0.6);
+
+  transform: scale(1.08);
+}
+
+
+/* ======================================================
+   MOVIE GALLERY SECTION
+====================================================== */
+
+.movie-gallery-section {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 430px;
+
+  overflow: hidden;
+
   display: flex;
-  justify-content: right;
-  padding:0 5%;
-  gap:10px;
+
+  align-items: center;
+  justify-content: center;
+
+  background-size: cover;
+
+  background-position: center center;
+
+  background-repeat: no-repeat;
+
+  background-color: #111111;
 }
 
 
-.search-container input {
-  padding: 0.8rem;
-  border: 1px solid #fc7c02;
-  border-radius: 8px;
-  width: 300px;
-  background-color: inherit;
-  color: inherit;
+/* ======================================================
+   BACKGROUND OVERLAY
+====================================================== */
 
+.movie-gallery-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.35) 0%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+
+  z-index: 1;
+
+  pointer-events: none;
 }
+
+
+/* ======================================================
+   GALLERY CONTENT
+====================================================== */
+
+.movie-gallery-content {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 430px;
+
+  padding: 40px 20px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  z-index: 2;
+
+  background: transparent;
+}
+
+
+/* ======================================================
+   TRENDING TITLE
+====================================================== */
+
+.home-title {
+  margin: 0 0 28px 0;
+
+  padding: 0;
+
+  color: #ffffff;
+
+  background: transparent;
+
+  font-size: 40px;
+
+  font-weight: 700;
+
+  text-align: center;
+
+  letter-spacing: 0.5px;
+
+  text-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.9);
+}
+
+
+/* ======================================================
+   SEARCH WRAPPER
+====================================================== */
+
+.home-search-wrapper {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+}
+
+
+/* ======================================================
+   SEARCH INPUT
+====================================================== */
+
+.home-search-input {
+  width: 400px;
+
+  max-width: 85vw;
+
+  height: 48px;
+
+  padding: 0 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  border-radius: 25px;
+
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.20);
+
+  color: #ffffff;
+
+  backdrop-filter: blur(8px);
+
+  -webkit-backdrop-filter: blur(8px);
+
+  font-family: 'Segoe UI', sans-serif;
+
+  font-size: 15px;
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.25);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.home-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+.home-search-input:focus {
+  background: rgba(0, 0, 0, 0.45);
+
+  border-color: #ffffff;
+
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, 0.25);
+}
+
+
+/* ======================================================
+   MOVIES SECTION
+====================================================== */
+
+.trending-section {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 400px;
+
+  padding: 45px 5%;
+
+  margin: 0;
+
+  background: #eeeeee !important;
+
+  z-index: 5;
+}
+
+
+/* DARK MODE MOVIES SECTION */
+
+.home-dark .trending-section {
+  background: #111111 !important;
+}
+
+
+/* ======================================================
+   MOVIES CONTAINER
+====================================================== */
+
+.movies-container {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 300px;
+
+  margin: 0;
+  padding: 0;
+
+  background: transparent !important;
+
+  z-index: 10;
+}
+
+
+/* ======================================================
+   MOVIES GRID
+====================================================== */
 
 .movies-grid {
-  background-color: inherit;
-  opacity: 0;
-  animation: fadeIn 2s ease-out forwards 0.5s;
+  position: relative;
 
-}
+  width: 100%;
 
-.movie-card {
-  background-color: inherit;
-  color: inherit;
-  border: 1px solid #000000;
-  border-radius: 8px;
-  padding: 0.5rem;
   display: flex;
-  
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  gap: 25px;
+
+  margin: 0;
+  padding: 0;
+
+  background: transparent !important;
+
+  z-index: 20;
+
+  opacity: 1;
+
+  visibility: visible;
 }
 
-@keyframes fadeIn {
-  from {
-      opacity: 0;
-  }
-  to {
-      opacity: 1;
-  }
+
+/* ======================================================
+   IMPORTANT
+   Don't override MovieCard's original styling here.
+====================================================== */
+
+.movies-grid > * {
+  position: relative;
+
+  z-index: 30;
+
+  visibility: visible;
+
+  opacity: 1;
 }
 
 
+/* ======================================================
+   MOVIE MESSAGE
+====================================================== */
 
+.movies-message {
+  width: 100%;
+
+  min-height: 200px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  color: #555555;
+
+  background: transparent !important;
+
+  font-size: 18px;
+
+  font-weight: 500;
+}
+
+
+.home-dark .movies-message {
+  color: #cccccc;
+}
+
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+
+@media (max-width: 768px) {
+
+  .home-navbar {
+    height: 70px;
+
+    padding: 0 18px;
+  }
+
+
+  .home-website-name {
+    font-size: 22px;
+  }
+
+
+  .home-website-tagline {
+    font-size: 10px;
+  }
+
+
+  .home-theme-button {
+    width: 38px;
+    height: 38px;
+
+    font-size: 15px;
+  }
+
+
+  .movie-gallery-section {
+    min-height: 350px;
+  }
+
+
+  .movie-gallery-content {
+    min-height: 350px;
+
+    padding: 40px 15px;
+  }
+
+
+  .home-title {
+    font-size: 32px;
+
+    margin-bottom: 25px;
+  }
+
+
+  .home-search-input {
+    width: 350px;
+
+    max-width: 85vw;
+
+    height: 45px;
+  }
+
+
+  .trending-section {
+    padding: 35px 4%;
+  }
+
+
+  .movies-grid {
+    gap: 20px;
+  }
+
+}
+
+
+/* ======================================================
+   SMALL MOBILE
+====================================================== */
+
+@media (max-width: 380px) {
+
+  .home-navbar {
+    padding: 0 15px;
+  }
+
+
+  .home-website-name {
+    font-size: 19px;
+  }
+
+
+  .home-website-tagline {
+    font-size: 9px;
+  }
+
+
+  .movie-gallery-section {
+    min-height: 300px;
+  }
+
+
+  .movie-gallery-content {
+    min-height: 300px;
+
+    padding: 30px 12px;
+  }
+
+
+  .home-title {
+    font-size: 28px;
+  }
+
+
+  .home-search-input {
+    width: 90vw;
+  }
+
+}
+
+/* ======================================================
+   TRENDING TITLE + SEARCH ZOOM-IN ANIMATION
+====================================================== */
+
+.home-title {
+  animation: trendingZoomIn 1s ease-out forwards;
+  transform-origin: center;
+}
+
+
+.home-search-wrapper {
+  animation: searchZoomIn 1.1s ease-out 0.15s forwards;
+  transform-origin: center;
+  opacity: 0;
+}
+
+
+/* ======================================================
+   TRENDING MOVIES ZOOM
+====================================================== */
+
+@keyframes trendingZoomIn {
+
+  0% {
+    opacity: 0;
+    transform: scale(0.65);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+
+/* ======================================================
+   SEARCH BAR ZOOM
+====================================================== */
+
+@keyframes searchZoomIn {
+
+  0% {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+/* ======================================================
+   MOVIE CARDS - STAGGER ANIMATION
+====================================================== */
+
+.movies-grid > * {
+  opacity: 0;
+  transform: translateY(35px) scale(0.92);
+
+  animation: movieCardOpen 0.7s ease-out forwards;
+}
+
+
+/* Each card opens with a small delay */
+
+.movies-grid > *:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.movies-grid > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.movies-grid > *:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.movies-grid > *:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.movies-grid > *:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.movies-grid > *:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.movies-grid > *:nth-child(7) {
+  animation-delay: 0.7s;
+}
+
+.movies-grid > *:nth-child(8) {
+  animation-delay: 0.8s;
+}
+
+.movies-grid > *:nth-child(9) {
+  animation-delay: 0.9s;
+}
+
+.movies-grid > *:nth-child(10) {
+  animation-delay: 1s;
+}
+
+.movies-grid > *:nth-child(11) {
+  animation-delay: 1.1s;
+}
+
+.movies-grid > *:nth-child(12) {
+  animation-delay: 1.2s;
+}
+
+
+/* ======================================================
+   CARD OPEN ANIMATION
+====================================================== */
+
+@keyframes movieCardOpen {
+
+  0% {
+    opacity: 0;
+    transform: translateY(35px) scale(0.92);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+}

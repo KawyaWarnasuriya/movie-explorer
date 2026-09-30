@@ -1,0 +1,485 @@
+/* ======================================================
+   MOVIE CARD
+====================================================== */
+
+.movie-card {
+  width: 200px;
+
+  background: #ffffff;
+
+  border: 1px solid #dddddd;
+
+  border-radius: 15px;
+
+  overflow: hidden;
+
+  padding: 0;
+
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.15);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+/* ======================================================
+   CARD HOVER
+====================================================== */
+
+.movie-card:hover {
+  transform: translateY(-8px);
+
+  border-color: #999999;
+
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ======================================================
+   POSTER CONTAINER
+====================================================== */
+
+.movie-poster-container {
+  width: 100%;
+
+  height: 290px;
+
+  overflow: hidden;
+
+  background: #eeeeee;
+
+  flex-shrink: 0;
+
+  position: relative;
+}
+
+
+/* ======================================================
+   MOVIE POSTER
+====================================================== */
+
+.movie-poster {
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.4s ease;
+}
+
+
+.movie-card:hover .movie-poster {
+  transform: scale(1.05);
+}
+
+
+/* ======================================================
+   FAVORITE BUTTON
+====================================================== */
+
+.favorite-button {
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  margin: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.70);
+
+  color: #ffffff;
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  z-index: 50;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* ======================================================
+   FAVORITE BUTTON ICON
+====================================================== */
+
+.favorite-button svg {
+  color: inherit !important;
+
+  fill: currentColor !important;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+/* ======================================================
+   NORMAL HOVER
+   Gray hover - NOT red
+====================================================== */
+
+.favorite-button:hover {
+  transform: scale(1.10);
+
+  background: #4a4a4a;
+
+  border-color: #ffffff;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ======================================================
+   FAVORITE ACTIVE
+====================================================== */
+
+.favorite-button.favorite-active {
+  background: rgba(20, 20, 20, 0.88) !important;
+
+  color: #ff0000 !important;
+
+  border-color: #ff0000 !important;
+
+  box-shadow:
+    0 0 14px rgba(255, 0, 0, 0.35);
+}
+
+
+.favorite-button.favorite-active svg {
+  color: #ff0000 !important;
+
+  fill: #ff0000 !important;
+}
+
+
+/* ======================================================
+   FAVORITE ACTIVE HOVER
+   Background becomes gray,
+   heart remains red
+====================================================== */
+
+.favorite-button.favorite-active:hover {
+  transform: scale(1.10);
+
+  background: #4a4a4a !important;
+
+  color: #ff0000 !important;
+
+  border-color: #bdbdbd !important;
+
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.12);
+}
+
+
+.favorite-button.favorite-active:hover svg {
+  color: #ff0000 !important;
+
+  fill: #ff0000 !important;
+}
+
+
+/* ======================================================
+   BUTTON DISABLED
+====================================================== */
+
+.favorite-button:disabled {
+  cursor: wait;
+
+  opacity: 0.75;
+}
+
+
+/* ======================================================
+   CARD CONTENT
+   GRAY BACKGROUND
+====================================================== */
+
+.movie-card-content {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 12px;
+
+  text-align: center;
+
+  background: #d6d6d6;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+}
+
+
+/* ======================================================
+   MOVIE TITLE
+====================================================== */
+
+.movie-title {
+  width: 100%;
+
+  margin: 0;
+
+  min-height: 42px;
+
+  padding: 8px 6px;
+
+  box-sizing: border-box;
+
+  display: -webkit-box;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #333333;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+
+  text-align: center;
+
+  overflow: hidden;
+
+  background: transparent;
+
+  -webkit-line-clamp: 2;
+
+  -webkit-box-orient: vertical;
+}
+
+
+/* ======================================================
+   RATING
+====================================================== */
+
+.movie-rating {
+  margin-top: 8px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 4px;
+
+  font-size: 14px;
+
+  background: transparent;
+}
+
+
+/* ======================================================
+   RATING STAR
+====================================================== */
+
+.rating-star {
+  color: #555555;
+
+  font-size: 17px;
+}
+
+
+/* ======================================================
+   RATING VALUE
+====================================================== */
+
+.rating-value {
+  color: #222222;
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+
+/* ======================================================
+   / 10
+====================================================== */
+
+.rating-text {
+  color: #666666;
+
+  font-size: 13px;
+}
+
+
+/* ======================================================
+   MORE DETAILS BUTTON
+====================================================== */
+
+.more-details-button {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 100%;
+
+  height: 38px;
+
+  margin-top: 12px;
+
+  padding: 0 10px;
+
+  box-sizing: border-box;
+
+  border-radius: 8px;
+
+  background: #222222;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.3px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* ======================================================
+   BUTTON HOVER
+====================================================== */
+
+.more-details-button:hover {
+  background: #444444;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 5px 12px rgba(0, 0, 0, 0.25);
+
+  color: #ffffff;
+}
+
+
+/* ======================================================
+   BUTTON ACTIVE
+====================================================== */
+
+.more-details-button:active {
+  transform: translateY(0);
+
+  box-shadow: none;
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 768px) {
+
+  .movie-card {
+    width: 180px;
+  }
+
+  .movie-poster-container {
+    height: 260px;
+  }
+
+  .movie-title {
+    font-size: 15px;
+  }
+
+  .more-details-button {
+    height: 36px;
+
+    font-size: 12px;
+  }
+
+  .favorite-button {
+    width: 38px;
+
+    height: 38px;
+
+    top: 10px;
+
+    right: 10px;
+
+    font-size: 18px;
+  }
+}
+
+
+/* ======================================================
+   SMALL MOBILE
+====================================================== */
+
+@media (max-width: 400px) {
+
+  .movie-card {
+    width: 160px;
+  }
+
+  .movie-poster-container {
+    height: 230px;
+  }
+
+  .favorite-button {
+    width: 36px;
+
+    height: 36px;
+
+    top: 8px;
+
+    right: 8px;
+
+    font-size: 17px;
+  }
+
+}
